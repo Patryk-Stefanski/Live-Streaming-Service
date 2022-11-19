@@ -4,12 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8  offset-lg-2">
-            <h1>Live-Streaming-Service with Face Detection</h1>
-            <form method="post" action="{{ url_for('tasks') }}">
-                <input type="submit" value="Face Only" name="face" />
-                <input type="submit" value="Mark Face" name="markFace" />
-                <input type="submit" value="Detect Face" name="detectFace" />
-            </form>
+            <h1>Live-Streaming-Service with Face Recognition</h1>
             <img src="{{ url_for('video_feed') }}" width="100%">
         </div>
     </div>

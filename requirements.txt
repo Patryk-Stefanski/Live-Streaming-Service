@@ -2,3 +2,6 @@ opencv-python~=4.6.0.66
 numpy~=1.23.4
 Flask~=2.2.2
 Pillow~=9.3.0
+eventlet~=0.33.2
+waitress~=2.0.0
+socketio~=0.2.1
