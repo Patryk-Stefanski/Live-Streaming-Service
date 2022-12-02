@@ -46,8 +46,9 @@ def gen_frames():  # generate frame by frame from camera
         count += 1  # count frames
         # If camera read is ok , detect faces and render the image
         success, frame = camera.read()
-        if success and count % 2 == 0:  # generate every second frame
-            frame = recognize_face(frame)  # call the face detect function above
+        if success:
+            if count % 2 == 0:  # generate every second frame
+                frame = recognize_face(frame)  # call the face detect function above
 
             try:
                 ret, buffer = cv2.imencode('.jpg', frame)
@@ -83,4 +84,7 @@ def run():
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    try:
+        socketio.run(app)
+    except Exception as excp:
+        print(excp)

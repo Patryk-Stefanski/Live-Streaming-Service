@@ -1,7 +1,7 @@
 import cv2
 import os
 import numpy as np
-from Pillow import Image
+from PIL import Image
 import pickle
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

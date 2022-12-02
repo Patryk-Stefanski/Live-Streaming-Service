@@ -5,6 +5,7 @@ import logging
 
 hostStr = '0.0.0.0'
 portStr = '5000'
+threads = 6
 
 logger = logging.getLogger('waitress')
 logger.setLevel(logging.INFO)
@@ -13,6 +14,18 @@ logger.setLevel(logging.INFO)
 sio = socketio.Server()
 server = socketio.WSGIApp(sio, app)
 
+
+@sio.event
+def connect(sid, environ, auth):
+    print('connect ', sid)
+
+
+@sio.event
+def disconnect(sid):
+    print('disconnect ', sid)
+
+
 if __name__ == '__main__':
-    serve(server, host=hostStr, port=portStr, url_scheme='http', threads=6, expose_tracebacks=True,
-          log_untrusted_proxy_headers=True)
+    print("Starting Server on {0}:{1}".format( hostStr, portStr))
+    print("Threading Enabled for {0} clients".format(threads))
+    serve(server, host=hostStr, port=portStr, url_scheme='http', threads=threads, log_untrusted_proxy_headers=True)
