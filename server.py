@@ -2,8 +2,10 @@ from waitress import serve
 from livestream import app
 import socketio
 import logging
+import socket
 
-hostStr = '0.0.0.0'
+hostStr = socket.gethostname()
+Ip = socket.gethostbyname(hostStr)
 portStr = '5000'
 threads = 6
 
@@ -26,6 +28,6 @@ def disconnect(sid):
 
 
 if __name__ == '__main__':
-    print("Starting Server on {0}:{1}".format( hostStr, portStr))
+    print("Starting Server on {0}:{1}".format(hostStr, portStr))
     print("Threading Enabled for {0} clients".format(threads))
-    serve(server, host=hostStr, port=portStr, url_scheme='http', threads=threads, log_untrusted_proxy_headers=True)
+    serve(server, host=Ip, port=portStr, url_scheme='http', threads=threads, log_untrusted_proxy_headers=True)

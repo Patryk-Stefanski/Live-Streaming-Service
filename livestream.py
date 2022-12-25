@@ -36,6 +36,13 @@ def recognize_face(frame):
             txt = "{0} Confidence: {1}".format(name, round(conf))
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)  # mark face recognition with border
             cv2.putText(frame, txt, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
+        if conf > 85:
+            name = "Unknown"
+            txt = "{0} Confidence: {1}".format(name, round(conf))
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)  # mark face recognition with border
+            cv2.putText(frame, txt, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
+
+
 
     return frame
 
